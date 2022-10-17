@@ -11,7 +11,12 @@ const Contact: React.FC = () => {
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_fxrug84', 'template_r9o610j', form.current!, 'RZxtnK73wWa1cfIRo');
+    if (form.current == null) {
+      console.log("Some error occurred. The form hasn't been submitted.")
+      return; 
+    }
+
+    emailjs.sendForm('service_fxrug84', 'template_r9o610j', form.current, 'RZxtnK73wWa1cfIRo');
       
     (e.target as HTMLFormElement).reset()
   };
